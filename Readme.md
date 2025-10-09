@@ -53,3 +53,25 @@ In interviews and real-world projects, it’s about:
 - Latency vs Throughput  
 
 ### 📘 Files:
+
+
+
+## ⚙️ System Design Basics
+
+Learn how to build scalable systems step-by-step.
+
+### 🧠 Topics Covered
+- Designing APIs  
+- Database Schema Design  
+- Cache Layer & Strategies  
+- Message Queues  
+- CDN Integration  
+- Fault Tolerance & Failover  
+
+### 🏗 Example Designs
+- URL Shortener (like Bitly)  
+- Chat Application (like WhatsApp)  
+- File Storage (like Google Drive)  
+- Feed System (like Twitter)  
+
+
