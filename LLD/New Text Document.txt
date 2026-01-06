@@ -1,0 +1,207 @@
+
+LOW LEVEL DESIGN (LLD)
+RELATIONSHIPS IN OOP & UML
+Dependency | Association | Aggregation | Composition
+========================================================
+
+--------------------------------------------------------
+1. DEPENDENCY (<<use>> relationship)
+--------------------------------------------------------
+
+Definition:
+A dependency exists when one class temporarily uses another class.
+Changes in the used class may affect the using class.
+
+Key Characteristics:
+- Weakest relationship
+- No ownership
+- Short-lived
+- Object not stored as a class field
+- Low coupling
+- High testability
+
+Technical Details:
+- Appears via method parameters
+- Appears via local variables
+- Appears via static method usage
+- No lifecycle control
+
+Code Example:
+class PaymentService {
+    void process(Payment payment) {
+        payment.pay();
+    }
+}
+
+UML Representation:
+- Dashed arrow (---->)
+- Direction: Client --> Supplier
+
+Use Cases:
+- Utility classes
+- Helper methods
+- Strategy execution
+- Stateless services
+
+Interview Line:
+"Dependency represents a uses-a relationship."
+
+--------------------------------------------------------
+2. ASSOCIATION
+--------------------------------------------------------
+
+Definition:
+Association represents a structural relationship where one object
+knows about another object.
+
+Key Characteristics:
+- Long-lived relationship
+- No ownership
+- Objects exist independently
+- Stored as a field
+- Medium coupling
+
+Technical Details:
+- One class holds a reference to another
+- Can be unidirectional or bidirectional
+- Supports multiplicity
+
+Code Example:
+class Order {
+    Customer customer;
+}
+
+class Customer {
+    String name;
+}
+
+Multiplicity:
+1        -> Exactly one
+0..1     -> Optional
+1..*     -> One or more
+*        -> Many
+
+UML Representation:
+- Solid line
+- Optional arrow for navigation
+
+Interview Line:
+"Association means one object has a reference to another."
+
+--------------------------------------------------------
+3. AGGREGATION (Weak HAS-A)
+--------------------------------------------------------
+
+Definition:
+Aggregation is a special type of association representing a whole-part
+relationship where the part can exist independently.
+
+Key Characteristics:
+- Weak ownership
+- Independent lifecycle
+- Medium coupling
+- Parts are replaceable
+
+Technical Details:
+- Child objects are created externally
+- Parent does NOT control child lifecycle
+- Often used with dependency injection
+
+Code Example:
+class Team {
+    List<Player> players;
+
+    Team(List<Player> players) {
+        this.players = players;
+    }
+}
+
+class Player {
+    String name;
+}
+
+UML Representation:
+- Hollow diamond (◇)
+- Diamond placed at the whole side
+
+Real-World Analogy:
+College has Teachers
+College closes -> Teachers still exist
+
+Interview Line:
+"Aggregation is a has-a relationship with independent lifecycle."
+
+--------------------------------------------------------
+4. COMPOSITION (Strong HAS-A)
+--------------------------------------------------------
+
+Definition:
+Composition is a strong whole-part relationship where the part cannot
+exist without the whole.
+
+Key Characteristics:
+- Strong ownership
+- Dependent lifecycle
+- High coupling
+- Parts are NOT replaceable
+
+Technical Details:
+- Child object is created inside parent
+- Parent controls lifecycle
+- Child destroyed with parent
+- Strong reference for GC
+
+Code Example:
+class Car {
+    private final Engine engine;
+
+    Car() {
+        this.engine = new Engine();
+    }
+}
+
+class Engine {}
+
+UML Representation:
+- Filled diamond (◆)
+- Diamond placed at the owner side
+
+Real-World Analogy:
+House has Rooms
+House destroyed -> Rooms destroyed
+
+Interview Line:
+"Composition enforces ownership and lifecycle dependency."
+
+--------------------------------------------------------
+COMPARISON TABLE
+--------------------------------------------------------
+
+Relationship | Ownership | Lifecycle Dependent | UML Symbol
+--------------------------------------------------------
+Dependency   | No        | No                  | Dashed arrow
+Association  | No        | No                  | Solid line
+Aggregation  | Weak      | No                  | Hollow diamond
+Composition  | Strong    | Yes                 | Filled diamond
+
+--------------------------------------------------------
+DESIGN DECISION CHEAT CODE
+--------------------------------------------------------
+
+Ask these questions:
+1. Is it just method usage? -> Dependency
+2. Does one object know another? -> Association
+3. Can child exist without parent? -> Aggregation
+4. Does parent create & own child? -> Composition
+
+--------------------------------------------------------
+INTERVIEW GOLDEN RULE
+--------------------------------------------------------
+
+Prefer COMPOSITION over INHERITANCE
+Reason:
+- Better encapsulation
+- Lower coupling
+- Better maintainability
+
+
