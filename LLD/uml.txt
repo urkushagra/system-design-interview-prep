@@ -1,0 +1,76 @@
+====================================================
+UML QUICK NOTES FOR LOW LEVEL DESIGN
+====================================================
+
+UML (Unified Modeling Language) is a standard visual
+language used to represent system design.
+
+----------------------------------------------------
+IMPORTANT UML DIAGRAMS
+----------------------------------------------------
+1. Class Diagram - Shows system structure
+2. Sequence Diagram - Shows interaction flow
+
+----------------------------------------------------
+CLASS DIAGRAM SYMBOLS
+----------------------------------------------------
+Class:
+Rectangle divided into:
+- Class Name
+- Attributes
+- Methods
+
+Visibility:
++ Public
+- Private
+# Protected
+~ Default
+
+Interface:
+Marked with <<interface>>
+
+Abstract Class:
+Class or methods written in italics
+
+----------------------------------------------------
+RELATIONSHIPS
+----------------------------------------------------
+Inheritance (IS-A):
+Hollow triangle arrow pointing to parent
+
+Dependency (USES):
+Dashed arrow
+
+Association (KNOWS):
+Solid line
+
+Aggregation (HAS-A, weak):
+Hollow diamond at owner side
+
+Composition (HAS-A, strong):
+Filled diamond at owner side
+
+----------------------------------------------------
+MULTIPLICITY
+----------------------------------------------------
+1     : Exactly one
+0..1  : Zero or one
+*     : Many
+1..*  : One or more
+
+----------------------------------------------------
+SEQUENCE DIAGRAM SYMBOLS
+----------------------------------------------------
+Actor        : External user or system
+Lifeline     : Object existence over time
+Arrow        : Method call
+Activation   : Execution duration
+
+----------------------------------------------------
+INTERVIEW REMINDERS
+----------------------------------------------------
+- Use correct arrows and symbols
+- Keep diagrams simple
+- Focus on clarity over perfection
+
+
